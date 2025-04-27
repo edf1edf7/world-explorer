@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - World Explorer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 500px;
+            margin: 2rem;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2196F3;
+        }
+
+        button {
+            width: 100%;
+            padding: 1rem;
+            background: #2196F3;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: #1976D2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .avatar-section {
+            display: none;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .avatar-section h2 {
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .avatar-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-group h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .avatar-options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .avatar-option {
+            aspect-ratio: 1;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .avatar-option:hover {
+            transform: scale(1.05);
+            border-color: #2196F3;
+        }
+
+        .avatar-option.selected {
+            border-color: #2196F3;
+            box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+        }
+
+        .avatar-option img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .avatar-option:hover img {
+            transform: scale(1.05);
+        }
+
+        .avatar-option.selected img {
+            border: 3px solid #2196F3;
+            box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+        }
+
+        #saveAvatar {
+            margin-top: 1rem;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .success-message {
+            color: #2ecc71;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            display: none;
+        }
+
+        .password-requirements {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        .password-requirements ul {
+            margin: 0.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .password-requirements li {
+            margin-bottom: 0.25rem;
+        }
+
+        .password-requirements li.valid {
+            color: #2ecc71;
+        }
+
+        .password-requirements li.invalid {
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Create Your Account</h1>
+        
+        <!-- Registration Form -->
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" required minlength="2" maxlength="50">
+                <div class="error-message" id="firstNameError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" required minlength="2" maxlength="50">
+                <div class="error-message" id="lastNameError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="grade">Current Grade</label>
+                <select id="grade" required>
+                    <option value="">Select Grade</option>
+                    <option value="3">Grade 3</option>
+                    <option value="4">Grade 4</option>
+                    <option value="5">Grade 5</option>
+                    <option value="6">Grade 6</option>
+                    <option value="7">Grade 7</option>
+                    <option value="8">Grade 8</option>
+                </select>
+                <div class="error-message" id="gradeError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required minlength="4" maxlength="20" pattern="[a-zA-Z0-9_]+">
+                <div class="error-message" id="usernameError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required minlength="8">
+                <div class="password-requirements">
+                    <p>Password must meet the following requirements:</p>
+                    <ul>
+                        <li id="length">At least 8 characters long</li>
+                        <li id="uppercase">Contains at least one uppercase letter</li>
+                        <li id="lowercase">Contains at least one lowercase letter</li>
+                        <li id="number">Contains at least one number</li>
+                    </ul>
+                </div>
+                <div class="error-message" id="passwordError"></div>
+            </div>
+            
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" required>
+                <div class="error-message" id="confirmPasswordError"></div>
+            </div>
+            
+            <button type="submit">Create Account</button>
+        </form>
+
+        <!-- Avatar Creation Section -->
+        <div id="avatarSection" class="avatar-section">
+            <h2>Choose Your Avatar</h2>
+            
+            <div class="avatar-grid">
+                <div class="avatar-group">
+                    <div class="avatar-options">
+                        <div class="avatar-option" data-gender="female" data-avatar="girl1">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy1&backgroundColor=b6e3f4&hair=long01&hairColor=8B4513&clothingColor=FF69B4&mouth=smile&eyes=happy" alt="Happy Avatar 1">
+                        </div>
+                        <div class="avatar-option" data-gender="female" data-avatar="girl2">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy2&backgroundColor=b6e3f4&hair=shortHair&hairColor=000000&clothingColor=4169E1&mouth=smile&eyes=happy" alt="Happy Avatar 2">
+                        </div>
+                        <div class="avatar-option" data-gender="female" data-avatar="girl3">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy3&backgroundColor=b6e3f4&hair=long02&hairColor=4B0082&clothingColor=32CD32&mouth=smile&eyes=happy" alt="Happy Avatar 3">
+                        </div>
+                        <div class="avatar-option" data-gender="female" data-avatar="girl4">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy4&backgroundColor=b6e3f4&hair=curly&hairColor=FFD700&clothingColor=FF4500&mouth=smile&eyes=happy" alt="Happy Avatar 4">
+                        </div>
+                        <div class="avatar-option" data-gender="female" data-avatar="girl5">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy5&backgroundColor=b6e3f4&hair=long03&hairColor=A52A2A&clothingColor=9370DB&mouth=smile&eyes=happy" alt="Happy Avatar 5">
+                        </div>
+                        <div class="avatar-option" data-gender="female" data-avatar="girl6">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy6&backgroundColor=b6e3f4&hair=long04&hairColor=FF69B4&clothingColor=FFD700&mouth=smile&eyes=happy" alt="Happy Avatar 6">
+                        </div>
+                        <div class="avatar-option" data-gender="female" data-avatar="girl7">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy7&backgroundColor=b6e3f4&hair=shortHair&hairColor=000000&clothingColor=20B2AA&mouth=smile&eyes=happy" alt="Happy Avatar 7">
+                        </div>
+                        <div class="avatar-option" data-gender="female" data-avatar="girl8">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy8&backgroundColor=b6e3f4&hair=long05&hairColor=8B4513&clothingColor=FF6347&mouth=smile&eyes=happy" alt="Happy Avatar 8">
+                        </div>
+                        <div class="avatar-option" data-gender="female" data-avatar="girl9">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy17&backgroundColor=b6e3f4&hair=long01&hairColor=FF69B4&clothingColor=9370DB&mouth=smile&eyes=happy" alt="Happy Avatar 9">
+                        </div>
+                        <div class="avatar-option" data-gender="female" data-avatar="girl10">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy18&backgroundColor=b6e3f4&hair=curly&hairColor=4B0082&clothingColor=FFD700&mouth=smile&eyes=happy" alt="Happy Avatar 10">
+                        </div>
+                        <div class="avatar-option" data-gender="female" data-avatar="girl11">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy19&backgroundColor=b6e3f4&hair=long02&hairColor=000000&clothingColor=FF4500&mouth=smile&eyes=happy" alt="Happy Avatar 11">
+                        </div>
+                        <div class="avatar-option" data-gender="female" data-avatar="girl12">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy20&backgroundColor=b6e3f4&hair=shortHair&hairColor=A52A2A&clothingColor=32CD32&mouth=smile&eyes=happy" alt="Happy Avatar 12">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="avatar-group">
+                    <div class="avatar-options">
+                        <div class="avatar-option" data-gender="male" data-avatar="boy1">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy9&backgroundColor=b6e3f4&hair=shortHair&hairColor=000000&clothingColor=4169E1&mouth=smile&eyes=happy" alt="Happy Avatar 13">
+                        </div>
+                        <div class="avatar-option" data-gender="male" data-avatar="boy2">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy10&backgroundColor=b6e3f4&hair=shortHair&hairColor=8B4513&clothingColor=32CD32&mouth=smile&eyes=happy" alt="Happy Avatar 14">
+                        </div>
+                        <div class="avatar-option" data-gender="male" data-avatar="boy3">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy11&backgroundColor=b6e3f4&hair=shortHair&hairColor=4B0082&clothingColor=FF4500&mouth=smile&eyes=happy" alt="Happy Avatar 15">
+                        </div>
+                        <div class="avatar-option" data-gender="male" data-avatar="boy4">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy12&backgroundColor=b6e3f4&hair=shortHair&hairColor=FFD700&clothingColor=9370DB&mouth=smile&eyes=happy" alt="Happy Avatar 16">
+                        </div>
+                        <div class="avatar-option" data-gender="male" data-avatar="boy5">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy13&backgroundColor=b6e3f4&hair=shortHair&hairColor=A52A2A&clothingColor=FFD700&mouth=smile&eyes=happy" alt="Happy Avatar 17">
+                        </div>
+                        <div class="avatar-option" data-gender="male" data-avatar="boy6">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy14&backgroundColor=b6e3f4&hair=shortHair&hairColor=000000&clothingColor=20B2AA&mouth=smile&eyes=happy" alt="Happy Avatar 18">
+                        </div>
+                        <div class="avatar-option" data-gender="male" data-avatar="boy7">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy15&backgroundColor=b6e3f4&hair=shortHair&hairColor=8B4513&clothingColor=FF6347&mouth=smile&eyes=happy" alt="Happy Avatar 19">
+                        </div>
+                        <div class="avatar-option" data-gender="male" data-avatar="boy8">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy16&backgroundColor=b6e3f4&hair=shortHair&hairColor=000000&clothingColor=FF69B4&mouth=smile&eyes=happy" alt="Happy Avatar 20">
+                        </div>
+                        <div class="avatar-option" data-gender="male" data-avatar="boy9">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy21&backgroundColor=b6e3f4&hair=shortHair&hairColor=FF69B4&clothingColor=9370DB&mouth=smile&eyes=happy" alt="Happy Avatar 21">
+                        </div>
+                        <div class="avatar-option" data-gender="male" data-avatar="boy10">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy22&backgroundColor=b6e3f4&hair=shortHair&hairColor=4B0082&clothingColor=FFD700&mouth=smile&eyes=happy" alt="Happy Avatar 22">
+                        </div>
+                        <div class="avatar-option" data-gender="male" data-avatar="boy11">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy23&backgroundColor=b6e3f4&hair=shortHair&hairColor=000000&clothingColor=FF4500&mouth=smile&eyes=happy" alt="Happy Avatar 23">
+                        </div>
+                        <div class="avatar-option" data-gender="male" data-avatar="boy12">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=happy24&backgroundColor=b6e3f4&hair=shortHair&hairColor=A52A2A&clothingColor=32CD32&mouth=smile&eyes=happy" alt="Happy Avatar 24">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <button id="saveAvatar">Save Avatar</button>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html> 

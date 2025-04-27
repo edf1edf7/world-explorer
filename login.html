@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - World Capitals Learning</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .forgot-password {
+            text-align: right;
+            margin-top: 1rem;
+        }
+
+        .forgot-password a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+
+        .password-recovery {
+            display: none;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+
+        .password-recovery.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Welcome Back!</h1>
+        
+        <!-- Step 1: Username -->
+        <div id="step1" class="step active">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" required>
+            </div>
+            <button id="nextStep" class="cta-button">Next</button>
+            <div class="forgot-password">
+                <a href="#" id="forgotPassword">Forgot Password?</a>
+            </div>
+        </div>
+
+        <!-- Step 2: Password -->
+        <div id="step2" class="step">
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required>
+            </div>
+            <button id="loginButton" class="cta-button">Login</button>
+            <button id="backButton" class="cta-button secondary">Back</button>
+        </div>
+
+        <!-- Password Recovery -->
+        <div id="passwordRecovery" class="password-recovery">
+            <h2>Password Recovery</h2>
+            <div class="form-group">
+                <label for="recoveryEmail">Email Address</label>
+                <input type="email" id="recoveryEmail" required>
+            </div>
+            <button id="sendRecovery" class="cta-button">Send Recovery Email</button>
+            <button id="cancelRecovery" class="cta-button secondary">Cancel</button>
+        </div>
+
+        <div class="register-link">
+            <p>Don't have an account? <a href="register.html">Register</a></p>
+        </div>
+    </div>
+    <script src="auth.js"></script>
+</body>
+</html> 

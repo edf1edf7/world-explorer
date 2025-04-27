@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - World Explorer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f7fa;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .admin-title {
+            color: #2c3e50;
+            margin: 0;
+        }
+
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stat-title {
+            color: #666;
+            font-size: 0.9rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .stat-value {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .users-table {
+            width: 100%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .users-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .users-table th,
+        .users-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .users-table th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .users-table tr:hover {
+            background: #f8f9fa;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #eee;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #4CAF50;
+            transition: width 0.3s ease;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .edit-button {
+            background: #2196F3;
+            color: white;
+        }
+
+        .delete-button {
+            background: #f44336;
+            color: white;
+        }
+
+        .action-button:hover {
+            opacity: 0.9;
+            transform: translateY(-1px);
+        }
+
+        .search-bar {
+            margin-bottom: 1rem;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            border-color: #2196F3;
+        }
+
+        .no-users {
+            text-align: center;
+            padding: 2rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1 class="admin-title">Admin Dashboard</h1>
+            <button class="action-button edit-button" onclick="logout()">Logout</button>
+        </div>
+
+        <div class="admin-stats">
+            <div class="stat-card">
+                <h3 class="stat-title">Total Users</h3>
+                <p class="stat-value" id="totalUsers">0</p>
+            </div>
+            <div class="stat-card">
+                <h3 class="stat-title">Active Users</h3>
+                <p class="stat-value" id="activeUsers">0</p>
+            </div>
+            <div class="stat-card">
+                <h3 class="stat-title">Average Progress</h3>
+                <p class="stat-value" id="avgProgress">0%</p>
+            </div>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search users..." onkeyup="searchUsers()">
+        </div>
+
+        <div class="users-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Avatar</th>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Grade</th>
+                        <th>Progress</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                    <!-- Users will be populated here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Check if user is admin
+        function checkAdmin() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser || !currentUser.isAdmin) {
+                window.location.href = 'login.html';
+            }
+        }
+
+        // Load users data
+        function loadUsers() {
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const tableBody = document.getElementById('usersTableBody');
+            tableBody.innerHTML = '';
+
+            if (users.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="6" class="no-users">No users found</td>
+                    </tr>
+                `;
+                return;
+            }
+
+            users.forEach(user => {
+                const totalProgress = calculateTotalProgress(user.progress);
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <div class="user-avatar">
+                            <img src="${user.avatar?.src || ''}" alt="User Avatar">
+                        </div>
+                    </td>
+                    <td>${user.firstName} ${user.lastName}</td>
+                    <td>${user.username}</td>
+                    <td>Grade ${user.grade}</td>
+                    <td>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: ${totalProgress}%"></div>
+                        </div>
+                        <span>${totalProgress}%</span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="action-button edit-button" onclick="editUser('${user.username}')">Edit</button>
+                            <button class="action-button delete-button" onclick="deleteUser('${user.username}')">Delete</button>
+                        </div>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+
+            updateStats(users);
+        }
+
+        // Calculate total progress
+        function calculateTotalProgress(progress) {
+            const continents = Object.values(progress);
+            const totalPoints = continents.reduce((sum, continent) => sum + continent.points, 0);
+            const maxPoints = continents.length * 100; // Assuming 100 points per continent
+            return Math.round((totalPoints / maxPoints) * 100);
+        }
+
+        // Update statistics
+        function updateStats(users) {
+            document.getElementById('totalUsers').textContent = users.length;
+            document.getElementById('activeUsers').textContent = users.filter(user => 
+                Object.values(user.progress).some(continent => continent.points > 0)
+            ).length;
+            
+            const avgProgress = users.reduce((sum, user) => 
+                sum + calculateTotalProgress(user.progress), 0) / users.length;
+            document.getElementById('avgProgress').textContent = `${Math.round(avgProgress)}%`;
+        }
+
+        // Search users
+        function searchUsers() {
+            const searchInput = document.getElementById('searchInput');
+            const searchTerm = searchInput.value.toLowerCase();
+            const rows = document.getElementById('usersTableBody').getElementsByTagName('tr');
+
+            for (let row of rows) {
+                const name = row.cells[1].textContent.toLowerCase();
+                const username = row.cells[2].textContent.toLowerCase();
+                if (name.includes(searchTerm) || username.includes(searchTerm)) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            }
+        }
+
+        // Edit user
+        function editUser(username) {
+            // TODO: Implement edit user functionality
+            alert('Edit user functionality coming soon!');
+        }
+
+        // Delete user
+        function deleteUser(username) {
+            if (confirm('Are you sure you want to delete this user?')) {
+                const users = JSON.parse(localStorage.getItem('users') || '[]');
+                const updatedUsers = users.filter(user => user.username !== username);
+                localStorage.setItem('users', JSON.stringify(updatedUsers));
+                loadUsers();
+            }
+        }
+
+        // Logout
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+
+        // Initialize
+        checkAdmin();
+        loadUsers();
+    </script>
+</body>
+</html> 

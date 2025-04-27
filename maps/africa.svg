@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+    <style>
+        path {
+            fill: #e9ecef;
+            stroke: #adb5bd;
+            stroke-width: 0.5;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        path:hover {
+            fill: #dee2e6;
+            stroke: #6c757d;
+            stroke-width: 1;
+        }
+        path.correct {
+            fill: #4CAF50;
+            stroke: #388E3C;
+        }
+        path.incorrect {
+            fill: #f44336;
+            stroke: #d32f2f;
+        }
+        path.disabled {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        text {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            fill: #333;
+            pointer-events: none;
+        }
+    </style>
+    
+    <!-- North Africa -->
+    <path d="M150,100 L250,80 L350,120 L400,200 L350,250 L250,220 L150,180 Z" data-name="Morocco"/>
+    <path d="M350,120 L450,100 L550,150 L500,200 L400,180 L350,150 Z" data-name="Algeria"/>
+    <path d="M500,150 L600,120 L700,180 L650,230 L550,200 L500,180 Z" data-name="Libya"/>
+    <path d="M650,180 L750,150 L800,200 L750,250 L650,230 L600,200 Z" data-name="Egypt"/>
+    <path d="M400,180 L500,150 L550,200 L450,230 L400,220 Z" data-name="Tunisia"/>
+    
+    <!-- West Africa -->
+    <path d="M100,200 L200,180 L250,250 L200,300 L100,280 Z" data-name="Mauritania"/>
+    <path d="M200,180 L300,160 L350,230 L300,280 L200,250 Z" data-name="Mali"/>
+    <path d="M300,160 L400,140 L450,210 L400,260 L300,230 Z" data-name="Niger"/>
+    <path d="M100,280 L200,250 L250,320 L200,370 L100,350 Z" data-name="Senegal"/>
+    <path d="M200,250 L300,230 L350,300 L300,350 L200,320 Z" data-name="Burkina Faso"/>
+    <path d="M300,230 L400,210 L450,280 L400,330 L300,300 Z" data-name="Chad"/>
+    <path d="M100,350 L200,320 L250,390 L200,440 L100,420 Z" data-name="Guinea"/>
+    <path d="M200,320 L300,300 L350,370 L300,420 L200,390 Z" data-name="Nigeria"/>
+    <path d="M100,420 L200,390 L250,460 L200,510 L100,490 Z" data-name="Sierra Leone"/>
+    <path d="M200,390 L300,370 L350,440 L300,490 L200,460 Z" data-name="Cameroon"/>
+    <path d="M100,490 L200,460 L250,530 L200,580 L100,560 Z" data-name="Liberia"/>
+    <path d="M200,460 L300,440 L350,510 L300,560 L200,530 Z" data-name="Central African Republic"/>
+    <path d="M100,560 L200,530 L250,600 L200,650 L100,630 Z" data-name="Côte d'Ivoire"/>
+    <path d="M200,530 L300,510 L350,580 L300,630 L200,600 Z" data-name="Democratic Republic of the Congo"/>
+    <path d="M100,630 L200,600 L250,670 L200,720 L100,700 Z" data-name="Ghana"/>
+    <path d="M200,600 L300,580 L350,650 L300,700 L200,670 Z" data-name="Angola"/>
+    
+    <!-- East Africa -->
+    <path d="M400,260 L500,240 L550,310 L500,360 L400,340 Z" data-name="Sudan"/>
+    <path d="M500,240 L600,220 L650,290 L600,340 L500,310 Z" data-name="Ethiopia"/>
+    <path d="M600,220 L700,200 L750,270 L700,320 L600,290 Z" data-name="Somalia"/>
+    <path d="M400,340 L500,310 L550,380 L500,430 L400,410 Z" data-name="South Sudan"/>
+    <path d="M500,310 L600,290 L650,360 L600,410 L500,380 Z" data-name="Kenya"/>
+    <path d="M600,290 L700,270 L750,340 L700,390 L600,360 Z" data-name="Djibouti"/>
+    <path d="M400,410 L500,380 L550,450 L500,500 L400,480 Z" data-name="Uganda"/>
+    <path d="M500,380 L600,360 L650,430 L600,480 L500,450 Z" data-name="Tanzania"/>
+    <path d="M600,360 L700,340 L750,410 L700,460 L600,430 Z" data-name="Eritrea"/>
+    
+    <!-- Southern Africa -->
+    <path d="M400,480 L500,450 L550,520 L500,570 L400,550 Z" data-name="Rwanda"/>
+    <path d="M500,450 L600,430 L650,500 L600,550 L500,520 Z" data-name="Malawi"/>
+    <path d="M600,430 L700,410 L750,480 L700,530 L600,500 Z" data-name="Mozambique"/>
+    <path d="M400,550 L500,520 L550,590 L500,640 L400,620 Z" data-name="Burundi"/>
+    <path d="M500,520 L600,500 L650,570 L600,620 L500,590 Z" data-name="Zambia"/>
+    <path d="M600,500 L700,480 L750,550 L700,600 L600,570 Z" data-name="Zimbabwe"/>
+    <path d="M400,620 L500,590 L550,660 L500,710 L400,690 Z" data-name="Botswana"/>
+    <path d="M500,590 L600,570 L650,640 L600,690 L500,660 Z" data-name="Namibia"/>
+    <path d="M600,570 L700,550 L750,620 L700,670 L600,640 Z" data-name="South Africa"/>
+    <path d="M500,660 L550,640 L600,710 L550,760 L500,740 Z" data-name="Lesotho"/>
+    <path d="M550,640 L600,620 L650,690 L600,740 L550,710 Z" data-name="Eswatini"/>
+    
+    <!-- Islands -->
+    <path d="M700,600 L750,580 L800,650 L750,700 L700,680 Z" data-name="Madagascar"/>
+    <path d="M750,650 L780,640 L800,670 L780,690 L750,680 Z" data-name="Mauritius"/>
+    <path d="M780,600 L800,590 L820,620 L800,640 L780,630 Z" data-name="Seychelles"/>
+    <path d="M750,700 L780,690 L800,720 L780,740 L750,730 Z" data-name="Comoros"/>
+</svg> 

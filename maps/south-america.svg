@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+    <!-- Brazil -->
+    <path d="M100,100 L300,50 L400,150 L350,250 L200,200 Z" data-name="Brazil"/>
+    
+    <!-- Argentina -->
+    <path d="M200,200 L400,150 L450,250 L250,300 L200,250 Z" data-name="Argentina"/>
+    
+    <!-- Chile -->
+    <path d="M100,200 L200,150 L250,250 L150,300 L100,250 Z" data-name="Chile"/>
+    
+    <!-- Peru -->
+    <path d="M50,150 L150,100 L200,200 L100,250 L50,200 Z" data-name="Peru"/>
+    
+    <!-- Bolivia -->
+    <path d="M150,150 L250,100 L300,200 L200,250 L150,200 Z" data-name="Bolivia"/>
+    
+    <!-- Paraguay -->
+    <path d="M250,150 L350,100 L400,200 L300,250 L250,200 Z" data-name="Paraguay"/>
+    
+    <!-- Uruguay -->
+    <path d="M300,200 L400,150 L450,250 L350,300 L300,250 Z" data-name="Uruguay"/>
+    
+    <!-- Colombia -->
+    <path d="M0,100 L100,50 L150,150 L50,200 L0,150 Z" data-name="Colombia"/>
+    
+    <!-- Venezuela -->
+    <path d="M50,50 L150,0 L200,100 L100,150 L50,100 Z" data-name="Venezuela"/>
+    
+    <!-- Guyana -->
+    <path d="M0,50 L50,0 L100,100 L50,150 L0,100 Z" data-name="Guyana"/>
+    
+    <!-- Suriname -->
+    <path d="M50,0 L100,-50 L150,50 L100,100 L50,50 Z" data-name="Suriname"/>
+    
+    <!-- Ecuador -->
+    <path d="M0,0 L50,-50 L100,50 L50,100 L0,50 Z" data-name="Ecuador"/>
+</svg> 

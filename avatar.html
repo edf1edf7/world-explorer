@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Your Avatar - World Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .avatar-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .avatar-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .avatar-options {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-option {
+            width: 150px;
+            height: 200px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            background: #f9f9f9;
+        }
+
+        .avatar-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: #4CAF50;
+        }
+
+        .avatar-option.selected {
+            border-color: #4CAF50;
+            background: #e8f5e9;
+        }
+
+        .avatar-option img {
+            width: 100%;
+            height: auto;
+            margin-bottom: 1rem;
+        }
+
+        .avatar-option span {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: #4CAF50;
+            transition: width 0.3s ease;
+        }
+
+        .next-button {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .next-button:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .avatar-preview {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f9f9;
+        }
+
+        .avatar-preview img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="avatar-container">
+        <h1 class="avatar-title">Customize Your Avatar</h1>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="avatar-preview">
+            <img id="avatarPreview" src="" alt="Avatar Preview">
+        </div>
+
+        <!-- Gender Selection -->
+        <div id="genderStep" class="avatar-step">
+            <div class="avatar-options">
+                <div class="avatar-option" data-gender="male">
+                    <img src="assets/avatar/male.png" alt="Male Avatar">
+                    <span>Male</span>
+                </div>
+                <div class="avatar-option" data-gender="female">
+                    <img src="assets/avatar/female.png" alt="Female Avatar">
+                    <span>Female</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Body Type Selection -->
+        <div id="bodyTypeStep" class="avatar-step" style="display: none;">
+            <div class="avatar-options">
+                <div class="avatar-option" data-body="slim">
+                    <img src="assets/avatar/slim.png" alt="Slim Body Type">
+                    <span>Slim</span>
+                </div>
+                <div class="avatar-option" data-body="medium">
+                    <img src="assets/avatar/medium.png" alt="Medium Body Type">
+                    <span>Medium</span>
+                </div>
+                <div class="avatar-option" data-body="large">
+                    <img src="assets/avatar/large.png" alt="Large Body Type">
+                    <span>Large</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skin Tone Selection -->
+        <div id="skinToneStep" class="avatar-step" style="display: none;">
+            <div class="avatar-options">
+                <div class="avatar-option" data-skin="light">
+                    <img src="assets/avatar/light-skin.png" alt="Light Skin Tone">
+                    <span>Light</span>
+                </div>
+                <div class="avatar-option" data-skin="tan">
+                    <img src="assets/avatar/tan-skin.png" alt="Tan Skin Tone">
+                    <span>Tan</span>
+                </div>
+                <div class="avatar-option" data-skin="dark">
+                    <img src="assets/avatar/dark-skin.png" alt="Dark Skin Tone">
+                    <span>Dark</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hair Style Selection -->
+        <div id="hairStep" class="avatar-step" style="display: none;">
+            <div class="avatar-options">
+                <div class="avatar-option" data-hair="bald">
+                    <img src="assets/avatar/bald.png" alt="Bald">
+                    <span>Bald</span>
+                </div>
+                <div class="avatar-option" data-hair="short">
+                    <img src="assets/avatar/short-hair.png" alt="Short Hair">
+                    <span>Short Hair</span>
+                </div>
+                <div class="avatar-option" data-hair="long">
+                    <img src="assets/avatar/long-hair.png" alt="Long Hair">
+                    <span>Long Hair</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eye Color Selection -->
+        <div id="eyeColorStep" class="avatar-step" style="display: none;">
+            <div class="avatar-options">
+                <div class="avatar-option" data-eyes="blue">
+                    <img src="assets/avatar/blue-eyes.png" alt="Blue Eyes">
+                    <span>Blue Eyes</span>
+                </div>
+                <div class="avatar-option" data-eyes="brown">
+                    <img src="assets/avatar/brown-eyes.png" alt="Brown Eyes">
+                    <span>Brown Eyes</span>
+                </div>
+                <div class="avatar-option" data-eyes="black">
+                    <img src="assets/avatar/black-eyes.png" alt="Black Eyes">
+                    <span>Black Eyes</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clothing Style Selection -->
+        <div id="clothingStep" class="avatar-step" style="display: none;">
+            <div class="avatar-options">
+                <div class="avatar-option" data-clothing="sports">
+                    <img src="assets/avatar/sports-clothes.png" alt="Sports Clothes">
+                    <span>Sports</span>
+                </div>
+                <div class="avatar-option" data-clothing="casual">
+                    <img src="assets/avatar/casual-clothes.png" alt="Casual Clothes">
+                    <span>Casual</span>
+                </div>
+                <div class="avatar-option" data-clothing="formal">
+                    <img src="assets/avatar/formal-clothes.png" alt="Formal Clothes">
+                    <span>Formal</span>
+                </div>
+            </div>
+        </div>
+
+        <button class="next-button" id="nextButton">Next</button>
+    </div>
+
+    <script>
+        const steps = [
+            'genderStep',
+            'bodyTypeStep',
+            'skinToneStep',
+            'hairStep',
+            'eyeColorStep',
+            'clothingStep'
+        ];
+
+        let currentStep = 0;
+        const avatarData = {
+            gender: '',
+            bodyType: '',
+            skinTone: '',
+            hair: '',
+            eyes: '',
+            clothing: ''
+        };
+
+        function updateProgress() {
+            const progress = ((currentStep + 1) / steps.length) * 100;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+
+        function showStep(stepIndex) {
+            steps.forEach((step, index) => {
+                document.getElementById(step).style.display = index === stepIndex ? 'block' : 'none';
+            });
+            document.getElementById('nextButton').textContent = stepIndex === steps.length - 1 ? 'Save Avatar' : 'Next';
+        }
+
+        function updateAvatarPreview() {
+            const preview = document.getElementById('avatarPreview');
+            // This would be replaced with actual image composition logic
+            preview.src = `assets/avatar/${avatarData.gender}-${avatarData.bodyType}-${avatarData.skinTone}-${avatarData.hair}-${avatarData.eyes}-${avatarData.clothing}.png`;
+        }
+
+        document.querySelectorAll('.avatar-option').forEach(option => {
+            option.addEventListener('click', () => {
+                // Remove selected class from all options in current step
+                document.querySelectorAll(`#${steps[currentStep]} .avatar-option`).forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Add selected class to clicked option
+                option.classList.add('selected');
+                
+                // Update avatar data based on current step
+                const attribute = steps[currentStep].replace('Step', '').toLowerCase();
+                avatarData[attribute] = option.dataset[attribute];
+                
+                updateAvatarPreview();
+            });
+        });
+
+        document.getElementById('nextButton').addEventListener('click', () => {
+            if (currentStep < steps.length - 1) {
+                currentStep++;
+                showStep(currentStep);
+                updateProgress();
+            } else {
+                // Save avatar data
+                const userData = JSON.parse(localStorage.getItem('tempUserData'));
+                userData.avatar = avatarData;
+                localStorage.setItem('currentUser', JSON.stringify(userData));
+                localStorage.removeItem('tempUserData');
+                
+                // Redirect to home page
+                window.location.href = 'index.html';
+            }
+        });
+
+        // Initialize
+        showStep(0);
+        updateProgress();
+    </script>
+</body>
+</html> 

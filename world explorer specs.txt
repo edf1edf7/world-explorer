@@ -1,0 +1,67 @@
+
+
+http://localhost:8000/index.html
+
+
+1. Start the Server
+With Python
+Open Command Prompt or PowerShell, navigate to your project folder:
+
+cd "C:\Users\difal\Development tests\world capitals"
+
+
+Then run:
+
+python -m http.server 8000
+
+
+If you want to use Node.js, run:
+
+npx http-server -p 8000
+
+
+
+Restarting your local server is simple! Here’s how you do it:
+
+If You Used Python
+Go to the terminal window where your server is running.
+
+Stop the server:
+Click the terminal window.
+Press Ctrl + C (hold the Control key and press C).
+This will stop the server and return you to the command prompt.
+
+Start the server again:
+Run the command again:
+Apply to script.js
+You should see the “Serving HTTP on…” message again.
+
+1. Look for the Confirmation Message
+You should see something like:
+Apply to script.js
+This means your server is running!
+2. Open Your Web Browser
+Go to the address bar and type:
+Apply to script.js
+Press Enter.
+
+
+
+If You Used Node.js (http-server)
+Go to the terminal window where your server is running.
+Stop the server:
+Press Ctrl + C.
+Start the server again:
+Run:
+Apply to script.js
+
+Or, if you used npx:
+Apply to script.js
+
+
+When Would You Need Node.js?
+If you use JavaScript frameworks (React, Angular, Vue, etc.) that require a build process.
+If you run backend code written in Node.js.
+If you use npm packages or tools that require Node.
+For a static site/app like yours, Python’s server is enough!
+

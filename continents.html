@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose a World Region - World Countries Learning App</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .continents-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .continents-title {
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            font-size: 2.5rem;
+        }
+
+        .continents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .continent-button {
+            background-color: var(--white);
+            border: 2px solid var(--primary-color);
+            border-radius: 10px;
+            padding: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .continent-button:hover {
+            transform: scale(1.05);
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .continent-button h2 {
+            margin: 1rem 0;
+        }
+
+        .continent-icon {
+            width: 200px;
+            height: 150px;
+            margin-bottom: 1rem;
+        }
+
+        .continent-icon path {
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="continents-container">
+        <h1 class="continents-title">Choose a World Region</h1>
+        <div class="continents-grid">
+            <a href="learn.html?continent=africa" class="continent-button">
+                <svg class="continent-icon" viewBox="0 0 1000 1000">
+                    <path d="M500,100 L900,200 L800,600 L200,800 L100,500 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h2>Africa</h2>
+                <p>54 countries to discover</p>
+            </a>
+            <a href="learn.html?continent=asia" class="continent-button">
+                <svg class="continent-icon" viewBox="0 0 1000 1000">
+                    <path d="M200,200 L800,100 L900,500 L700,800 L300,700 L100,400 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h2>Asia</h2>
+                <p>48 countries to explore</p>
+            </a>
+            <a href="learn.html?continent=europe" class="continent-button">
+                <svg class="continent-icon" viewBox="0 0 1000 1000">
+                    <path d="M300,200 L700,100 L800,400 L600,700 L400,600 L200,300 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h2>Europe</h2>
+                <p>44 countries to master</p>
+            </a>
+            <a href="learn.html?continent=north-america" class="continent-button">
+                <svg class="continent-icon" viewBox="0 0 1000 1000">
+                    <path d="M200,300 L600,100 L800,400 L700,700 L400,800 L100,500 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h2>North America</h2>
+                <p>3 countries to learn</p>
+            </a>
+            <a href="learn.html?continent=central-america" class="continent-button">
+                <svg class="continent-icon" viewBox="0 0 1000 1000">
+                    <path d="M300,400 L700,300 L800,600 L500,800 L200,600 L100,400 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h2>Central America</h2>
+                <p>7 countries to learn</p>
+            </a>
+            <a href="learn.html?continent=caribbean" class="continent-button">
+                <svg class="continent-icon" viewBox="0 0 1000 1000">
+                    <circle cx="500" cy="500" r="300" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h2>Caribbean</h2>
+                <p>13 countries to learn</p>
+            </a>
+            <a href="learn.html?continent=south-america" class="continent-button">
+                <svg class="continent-icon" viewBox="0 0 1000 1000">
+                    <path d="M300,200 L700,300 L800,600 L500,800 L200,600 L100,300 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h2>South America</h2>
+                <p>12 countries to know</p>
+            </a>
+            <a href="learn.html?continent=oceania" class="continent-button">
+                <svg class="continent-icon" viewBox="0 0 1000 1000">
+                    <path d="M400,300 L600,200 L700,500 L500,700 L300,600 L200,400 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+                </svg>
+                <h2>Oceania</h2>
+                <p>14 countries to discover</p>
+            </a>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 

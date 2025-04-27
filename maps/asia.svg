@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+    <!-- Russia -->
+    <path d="M100,100 L300,50 L400,150 L350,250 L200,200 Z" data-name="Russia"/>
+    
+    <!-- China -->
+    <path d="M400,100 L600,50 L700,150 L600,250 L400,200 Z" data-name="China"/>
+    
+    <!-- India -->
+    <path d="M500,300 L600,250 L650,350 L550,400 L500,350 Z" data-name="India"/>
+    
+    <!-- Japan -->
+    <path d="M700,200 L750,150 L800,250 L750,300 L700,250 Z" data-name="Japan"/>
+    
+    <!-- South Korea -->
+    <path d="M650,250 L700,200 L750,300 L700,350 L650,300 Z" data-name="South Korea"/>
+    
+    <!-- North Korea -->
+    <path d="M600,250 L650,200 L700,300 L650,350 L600,300 Z" data-name="North Korea"/>
+    
+    <!-- Mongolia -->
+    <path d="M450,150 L550,100 L600,200 L500,250 L450,200 Z" data-name="Mongolia"/>
+    
+    <!-- Kazakhstan -->
+    <path d="M200,150 L300,100 L350,200 L250,250 L200,200 Z" data-name="Kazakhstan"/>
+    
+    <!-- Uzbekistan -->
+    <path d="M250,200 L350,150 L400,250 L300,300 L250,250 Z" data-name="Uzbekistan"/>
+    
+    <!-- Turkmenistan -->
+    <path d="M200,200 L300,150 L350,250 L250,300 L200,250 Z" data-name="Turkmenistan"/>
+    
+    <!-- Kyrgyzstan -->
+    <path d="M300,200 L400,150 L450,250 L350,300 L300,250 Z" data-name="Kyrgyzstan"/>
+    
+    <!-- Tajikistan -->
+    <path d="M250,250 L350,200 L400,300 L300,350 L250,300 Z" data-name="Tajikistan"/>
+    
+    <!-- Afghanistan -->
+    <path d="M300,250 L400,200 L450,300 L350,350 L300,300 Z" data-name="Afghanistan"/>
+    
+    <!-- Pakistan -->
+    <path d="M350,300 L450,250 L500,350 L400,400 L350,350 Z" data-name="Pakistan"/>
+    
+    <!-- Nepal -->
+    <path d="M450,300 L500,250 L550,350 L500,400 L450,350 Z" data-name="Nepal"/>
+    
+    <!-- Bhutan -->
+    <path d="M500,300 L550,250 L600,350 L550,400 L500,350 Z" data-name="Bhutan"/>
+    
+    <!-- Bangladesh -->
+    <path d="M550,300 L600,250 L650,350 L600,400 L550,350 Z" data-name="Bangladesh"/>
+    
+    <!-- Myanmar -->
+    <path d="M600,300 L650,250 L700,350 L650,400 L600,350 Z" data-name="Myanmar"/>
+    
+    <!-- Thailand -->
+    <path d="M650,300 L700,250 L750,350 L700,400 L650,350 Z" data-name="Thailand"/>
+    
+    <!-- Laos -->
+    <path d="M600,350 L650,300 L700,400 L650,450 L600,400 Z" data-name="Laos"/>
+    
+    <!-- Vietnam -->
+    <path d="M650,350 L700,300 L750,400 L700,450 L650,400 Z" data-name="Vietnam"/>
+    
+    <!-- Cambodia -->
+    <path d="M700,350 L750,300 L800,400 L750,450 L700,400 Z" data-name="Cambodia"/>
+    
+    <!-- Malaysia -->
+    <path d="M750,350 L800,300 L850,400 L800,450 L750,400 Z" data-name="Malaysia"/>
+    
+    <!-- Singapore -->
+    <path d="M800,400 L850,350 L900,450 L850,500 L800,450 Z" data-name="Singapore"/>
+    
+    <!-- Indonesia -->
+    <path d="M750,400 L850,350 L900,450 L800,500 L750,450 Z" data-name="Indonesia"/>
+    
+    <!-- Philippines -->
+    <path d="M700,400 L800,350 L850,450 L750,500 L700,450 Z" data-name="Philippines"/>
+    
+    <!-- Taiwan -->
+    <path d="M650,400 L700,350 L750,450 L700,500 L650,450 Z" data-name="Taiwan"/>
+    
+    <!-- Sri Lanka -->
+    <path d="M500,400 L550,350 L600,450 L550,500 L500,450 Z" data-name="Sri Lanka"/>
+    
+    <!-- Maldives -->
+    <path d="M450,400 L500,350 L550,450 L500,500 L450,450 Z" data-name="Maldives"/>
+    
+    <!-- Iran -->
+    <path d="M200,250 L300,200 L350,300 L250,350 L200,300 Z" data-name="Iran"/>
+    
+    <!-- Iraq -->
+    <path d="M150,250 L250,200 L300,300 L200,350 L150,300 Z" data-name="Iraq"/>
+    
+    <!-- Syria -->
+    <path d="M100,250 L200,200 L250,300 L150,350 L100,300 Z" data-name="Syria"/>
+    
+    <!-- Lebanon -->
+    <path d="M50,250 L100,200 L150,300 L100,350 L50,300 Z" data-name="Lebanon"/>
+    
+    <!-- Israel -->
+    <path d="M0,250 L50,200 L100,300 L50,350 L0,300 Z" data-name="Israel"/>
+    
+    <!-- Palestine -->
+    <path d="M0,300 L50,250 L100,350 L50,400 L0,350 Z" data-name="Palestine"/>
+    
+    <!-- Jordan -->
+    <path d="M50,300 L100,250 L150,350 L100,400 L50,350 Z" data-name="Jordan"/>
+    
+    <!-- Saudi Arabia -->
+    <path d="M100,300 L200,250 L250,350 L150,400 L100,350 Z" data-name="Saudi Arabia"/>
+    
+    <!-- Yemen -->
+    <path d="M150,350 L250,300 L300,400 L200,450 L150,400 Z" data-name="Yemen"/>
+    
+    <!-- Oman -->
+    <path d="M200,350 L300,300 L350,400 L250,450 L200,400 Z" data-name="Oman"/>
+    
+    <!-- United Arab Emirates -->
+    <path d="M250,350 L350,300 L400,400 L300,450 L250,400 Z" data-name="United Arab Emirates"/>
+    
+    <!-- Qatar -->
+    <path d="M300,350 L350,300 L400,400 L350,450 L300,400 Z" data-name="Qatar"/>
+    
+    <!-- Bahrain -->
+    <path d="M350,350 L400,300 L450,400 L400,450 L350,400 Z" data-name="Bahrain"/>
+    
+    <!-- Kuwait -->
+    <path d="M400,350 L450,300 L500,400 L450,450 L400,400 Z" data-name="Kuwait"/>
+    
+    <!-- Armenia -->
+    <path d="M450,350 L500,300 L550,400 L500,450 L450,400 Z" data-name="Armenia"/>
+    
+    <!-- Azerbaijan -->
+    <path d="M500,350 L550,300 L600,400 L550,450 L500,400 Z" data-name="Azerbaijan"/>
+    
+    <!-- Georgia -->
+    <path d="M550,350 L600,300 L650,400 L600,450 L550,400 Z" data-name="Georgia"/>
+    
+    <!-- Turkey -->
+    <path d="M600,350 L650,300 L700,400 L650,450 L600,400 Z" data-name="Turkey"/>
+    
+    <!-- Cyprus -->
+    <path d="M650,350 L700,300 L750,400 L700,450 L650,400 Z" data-name="Cyprus"/>
+    
+    <!-- Timor-Leste -->
+    <path d="M700,350 L750,300 L800,400 L750,450 L700,400 Z" data-name="Timor-Leste"/>
+    
+    <!-- Brunei -->
+    <path d="M750,350 L800,300 L850,400 L800,450 L750,400 Z" data-name="Brunei"/>
+</svg> 

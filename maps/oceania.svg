@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+    <!-- Australia -->
+    <path d="M100,100 L300,50 L400,150 L350,250 L200,200 Z" data-name="Australia"/>
+    
+    <!-- New Zealand -->
+    <path d="M500,100 L600,50 L650,150 L550,200 L500,150 Z" data-name="New Zealand"/>
+    
+    <!-- Papua New Guinea -->
+    <path d="M400,100 L500,50 L550,150 L450,200 L400,150 Z" data-name="Papua New Guinea"/>
+    
+    <!-- Fiji -->
+    <path d="M600,100 L650,50 L700,150 L650,200 L600,150 Z" data-name="Fiji"/>
+    
+    <!-- Solomon Islands -->
+    <path d="M650,100 L700,50 L750,150 L700,200 L650,150 Z" data-name="Solomon Islands"/>
+    
+    <!-- Vanuatu -->
+    <path d="M700,100 L750,50 L800,150 L750,200 L700,150 Z" data-name="Vanuatu"/>
+    
+    <!-- Samoa -->
+    <path d="M750,100 L800,50 L850,150 L800,200 L750,150 Z" data-name="Samoa"/>
+    
+    <!-- Tonga -->
+    <path d="M800,100 L850,50 L900,150 L850,200 L800,150 Z" data-name="Tonga"/>
+    
+    <!-- Kiribati -->
+    <path d="M850,100 L900,50 L950,150 L900,200 L850,150 Z" data-name="Kiribati"/>
+    
+    <!-- Micronesia -->
+    <path d="M900,100 L950,50 L1000,150 L950,200 L900,150 Z" data-name="Micronesia"/>
+    
+    <!-- Marshall Islands -->
+    <path d="M950,100 L1000,50 L1050,150 L1000,200 L950,150 Z" data-name="Marshall Islands"/>
+    
+    <!-- Palau -->
+    <path d="M1000,100 L1050,50 L1100,150 L1050,200 L1000,150 Z" data-name="Palau"/>
+    
+    <!-- Nauru -->
+    <path d="M1050,100 L1100,50 L1150,150 L1100,200 L1050,150 Z" data-name="Nauru"/>
+    
+    <!-- Tuvalu -->
+    <path d="M1100,100 L1150,50 L1200,150 L1150,200 L1100,150 Z" data-name="Tuvalu"/>
+</svg> 

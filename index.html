@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Explorer</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .user-profile {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #f0f0f0;
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .user-name {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .user-points {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .auth-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+            max-width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .auth-button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+            width: 100%;
+        }
+
+        .login-button {
+            background: #2196F3;
+            color: white;
+        }
+
+        .register-button {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .auth-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .progress-section {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .progress-item {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .progress-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .progress-item h3 {
+            color: #2c3e50;
+            margin: 0 0 0.5rem 0;
+            font-size: 1.1rem;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: #e9ecef;
+            border-radius: 6px;
+            margin: 0.5rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #45a049);
+            border-radius: 6px;
+            transition: width 0.5s ease;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                rgba(255,255,255,0.2) 25%,
+                transparent 25%,
+                transparent 50%,
+                rgba(255,255,255,0.2) 50%,
+                rgba(255,255,255,0.2) 75%,
+                transparent 75%,
+                transparent
+            );
+            background-size: 20px 20px;
+            animation: move 2s linear infinite;
+        }
+
+        @keyframes move {
+            0% {
+                background-position: 0 0;
+            }
+            100% {
+                background-position: 20px 0;
+            }
+        }
+
+        .progress-points {
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-points span {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .progress-percentage {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .start-learning {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .start-learning-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: #FF9800;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .start-learning-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .angela-bypass {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .angela-button {
+            background: #FF9800;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 20px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .angela-button:hover {
+            background: #F57C00;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .logout-button {
+            background: #f44336;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .logout-button:hover {
+            background: #d32f2f;
+        }
+
+        .edit-profile-button {
+            background: #2196F3;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .edit-profile-button:hover {
+            background: #1976D2;
+        }
+
+        /* Profile Edit Modal */
+        .profile-edit-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-edit-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .profile-edit-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .profile-info-section {
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2196F3;
+        }
+
+        .section-title {
+            color: #333;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.2rem;
+        }
+
+        .avatar-options {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .avatar-option {
+            aspect-ratio: 1;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .avatar-option:hover {
+            transform: scale(1.05);
+            border-color: #2196F3;
+        }
+
+        .avatar-option.selected {
+            border-color: #2196F3;
+            box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
+        }
+
+        .avatar-option img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .modal-button {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .save-button {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .cancel-button {
+            background: #f44336;
+            color: white;
+        }
+
+        .modal-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- User Profile -->
+    <div id="userProfile" class="user-profile" style="display: none;">
+        <div class="user-avatar" id="userAvatar">
+            <img src="" alt="User Avatar" id="userAvatarImg">
+        </div>
+        <div class="user-info">
+            <span class="user-name" id="userName"></span>
+            <span class="user-points" id="userPoints"></span>
+        </div>
+        <button class="edit-profile-button" onclick="openProfileEdit()">Edit Profile</button>
+        <button class="logout-button" onclick="logout()">Logout</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>World Explorer</h1>
+        <p>An interactive way to learn the location of each country in every continent</p>
+        
+        <!-- Authentication Buttons -->
+        <div id="authButtons" class="auth-buttons">
+            <a href="register.html" class="auth-button register-button">Register</a>
+            <a href="login.html" class="auth-button login-button">Login</a>
+        </div>
+
+        <!-- Start Learning Button (shown only when logged in) -->
+        <div id="startLearning" class="start-learning" style="display: none;">
+            <a href="continents.html" class="start-learning-button" id="startLearningButton">Start Learning</a>
+        </div>
+    </section>
+
+    <!-- Progress Section -->
+    <div id="progressSection" class="progress-section" style="display: none;">
+        <h2>Your Scores</h2>
+        <div class="progress-item">
+            <h3>Africa</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="africaProgress"></div>
+            </div>
+            <div class="progress-points">
+                <span id="africaPoints">0 points</span>
+                <span class="progress-percentage" id="africaPercentage">0%</span>
+            </div>
+        </div>
+        <div class="progress-item">
+            <h3>Asia</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="asiaProgress"></div>
+            </div>
+            <div class="progress-points">
+                <span id="asiaPoints">0 points</span>
+                <span class="progress-percentage" id="asiaPercentage">0%</span>
+            </div>
+        </div>
+        <div class="progress-item">
+            <h3>Europe</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="europeProgress"></div>
+            </div>
+            <div class="progress-points">
+                <span id="europePoints">0 points</span>
+                <span class="progress-percentage" id="europePercentage">0%</span>
+            </div>
+        </div>
+        <div class="progress-item">
+            <h3>North America</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="north-americaProgress"></div>
+            </div>
+            <div class="progress-points">
+                <span id="north-americaPoints">0 points</span>
+                <span class="progress-percentage" id="north-americaPercentage">0%</span>
+            </div>
+        </div>
+        <div class="progress-item">
+            <h3>Central America</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="central-americaProgress"></div>
+            </div>
+            <div class="progress-points">
+                <span id="central-americaPoints">0 points</span>
+                <span class="progress-percentage" id="central-americaPercentage">0%</span>
+            </div>
+        </div>
+        <div class="progress-item">
+            <h3>Caribbean</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="caribbeanProgress"></div>
+            </div>
+            <div class="progress-points">
+                <span id="caribbeanPoints">0 points</span>
+                <span class="progress-percentage" id="caribbeanPercentage">0%</span>
+            </div>
+        </div>
+        <div class="progress-item">
+            <h3>South America</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="south-americaProgress"></div>
+            </div>
+            <div class="progress-points">
+                <span id="south-americaPoints">0 points</span>
+                <span class="progress-percentage" id="south-americaPercentage">0%</span>
+            </div>
+        </div>
+        <div class="progress-item">
+            <h3>Oceania</h3>
+            <div class="progress-bar">
+                <div class="progress-fill" id="oceaniaProgress"></div>
+            </div>
+            <div class="progress-points">
+                <span id="oceaniaPoints">0 points</span>
+                <span class="progress-percentage" id="oceaniaPercentage">0%</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+    <script>
+        // Continent data with countries
+        const continentData = {
+            africa: {
+                name: 'Africa',
+                countries: [
+                    'Algeria', 'Angola', 'Benin', 'Botswana', 'Burkina Faso', 'Burundi', 'Cameroon', 'Cape Verde',
+                    'Central African Republic', 'Chad', 'Comoros', 'Congo', 'DR Congo', 'Djibouti', 'Egypt',
+                    'Equatorial Guinea', 'Eritrea', 'Ethiopia', 'Gabon', 'Gambia', 'Ghana', 'Guinea', 'Guinea-Bissau',
+                    'Ivory Coast', 'Kenya', 'Lesotho', 'Liberia', 'Libya', 'Madagascar', 'Malawi', 'Mali', 'Mauritania',
+                    'Mauritius', 'Morocco', 'Mozambique', 'Namibia', 'Niger', 'Nigeria', 'Rwanda', 'Sao Tome and Principe',
+                    'Senegal', 'Seychelles', 'Sierra Leone', 'Somalia', 'South Africa', 'South Sudan', 'Sudan', 'Swaziland',
+                    'Tanzania', 'Togo', 'Tunisia', 'Uganda', 'Zambia', 'Zimbabwe'
+                ]
+            },
+            asia: {
+                name: 'Asia',
+                countries: [
+                    'Afghanistan', 'Armenia', 'Azerbaijan', 'Bahrain', 'Bangladesh', 'Bhutan', 'Brunei', 'Cambodia',
+                    'China', 'Cyprus', 'East Timor', 'Georgia', 'India', 'Indonesia', 'Iran', 'Iraq', 'Israel', 'Japan',
+                    'Jordan', 'Kazakhstan', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Lebanon', 'Malaysia', 'Maldives', 'Mongolia',
+                    'Myanmar', 'Nepal', 'North Korea', 'Oman', 'Pakistan', 'Palestine', 'Philippines', 'Qatar', 'Russia',
+                    'Saudi Arabia', 'Singapore', 'South Korea', 'Sri Lanka', 'Syria', 'Taiwan', 'Tajikistan', 'Thailand',
+                    'Turkey', 'Turkmenistan', 'United Arab Emirates', 'Uzbekistan', 'Vietnam', 'Yemen'
+                ]
+            },
+            europe: {
+                name: 'Europe',
+                countries: [
+                    'Albania', 'Andorra', 'Austria', 'Belarus', 'Belgium', 'Bosnia and Herzegovina', 'Bulgaria',
+                    'Croatia', 'Czech Republic', 'Denmark', 'Estonia', 'Finland', 'France', 'Germany', 'Greece',
+                    'Hungary', 'Iceland', 'Ireland', 'Italy', 'Kosovo', 'Latvia', 'Liechtenstein', 'Lithuania',
+                    'Luxembourg', 'Macedonia', 'Malta', 'Moldova', 'Monaco', 'Montenegro', 'Netherlands', 'Norway',
+                    'Poland', 'Portugal', 'Romania', 'Russia', 'San Marino', 'Serbia', 'Slovakia', 'Slovenia',
+                    'Spain', 'Sweden', 'Switzerland', 'Ukraine', 'United Kingdom', 'Vatican City'
+                ]
+            },
+            'north-america': {
+                name: 'North America',
+                countries: [
+                    'Canada', 'Mexico', 'United States'
+                ]
+            },
+            'central-america': {
+                name: 'Central America',
+                countries: [
+                    'Belize', 'Costa Rica', 'El Salvador', 'Guatemala', 'Honduras', 'Nicaragua', 'Panama'
+                ]
+            },
+            caribbean: {
+                name: 'Caribbean',
+                countries: [
+                    'Antigua and Barbuda', 'Bahamas', 'Barbados', 'Cuba', 'Dominica', 'Dominican Republic',
+                    'Grenada', 'Haiti', 'Jamaica', 'Saint Kitts and Nevis', 'Saint Lucia',
+                    'Saint Vincent and the Grenadines', 'Trinidad and Tobago'
+                ]
+            },
+            'south-america': {
+                name: 'South America',
+                countries: [
+                    'Argentina', 'Bolivia', 'Brazil', 'Chile', 'Colombia', 'Ecuador', 'Guyana', 'Paraguay',
+                    'Peru', 'Suriname', 'Uruguay', 'Venezuela'
+                ]
+            },
+            oceania: {
+                name: 'Oceania',
+                countries: [
+                    'Australia', 'Fiji', 'Kiribati', 'Marshall Islands', 'Micronesia', 'Nauru', 'New Zealand',
+                    'Palau', 'Papua New Guinea', 'Samoa', 'Solomon Islands', 'Tonga', 'Tuvalu', 'Vanuatu'
+                ]
+            }
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const userProfile = document.getElementById('userProfile');
+            const progressSection = document.getElementById('progressSection');
+            const authButtons = document.getElementById('authButtons');
+            const startLearning = document.getElementById('startLearning');
+            const startLearningButton = document.getElementById('startLearningButton');
+
+            if (currentUser) {
+                // Show user profile and progress
+                userProfile.style.display = 'flex';
+                document.getElementById('userName').textContent = currentUser.username;
+                document.getElementById('userPoints').textContent = 'Total Points: ' + 
+                    Object.values(currentUser.progress).reduce((sum, continent) => sum + continent.points, 0);
+
+                progressSection.style.display = 'block';
+                authButtons.style.display = 'none';
+                startLearning.style.display = 'block';
+                
+                // Update button text based on progress
+                const hasProgress = Object.values(currentUser.progress).some(continent => continent.points > 0);
+                startLearningButton.textContent = hasProgress ? 'Continue Learning' : 'Start Learning';
+                
+                updateProgressBars(currentUser.progress);
+            } else {
+                // Show authentication buttons
+                authButtons.style.display = 'flex';
+                userProfile.style.display = 'none';
+                progressSection.style.display = 'none';
+                startLearning.style.display = 'none';
+            }
+        });
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.reload();
+        }
+
+        function bypassRegistration() {
+            // Create a temporary user profile for Angela
+            const angelaProfile = {
+                username: 'Angela',
+                points: 0,
+                progress: {
+                    'africa': { points: 0, completed: 0 },
+                    'asia': { points: 0, completed: 0 },
+                    'europe': { points: 0, completed: 0 },
+                    'north-america': { points: 0, completed: 0 },
+                    'south-america': { points: 0, completed: 0 },
+                    'oceania': { points: 0, completed: 0 }
+                }
+            };
+            
+            // Save the profile
+            localStorage.setItem('currentUser', JSON.stringify(angelaProfile));
+            
+            // Redirect to the continents page
+            window.location.href = 'continents.html';
+        }
+
+        function updateProgressBars(progress) {
+            Object.entries(progress).forEach(([continent, data]) => {
+                const progressFill = document.getElementById(`${continent}Progress`);
+                const pointsElement = document.getElementById(`${continent}Points`);
+                const percentageElement = document.getElementById(`${continent}Percentage`);
+                
+                if (progressFill && pointsElement && percentageElement) {
+                    // Use finalScore for the progress bar fill
+                    const score = data.finalScore || 0;
+                    
+                    // Update progress bar based on score
+                    progressFill.style.width = `${score}%`;
+                    progressFill.style.opacity = score > 0 ? '1' : '0';
+                    
+                    // Update points display
+                    pointsElement.textContent = `${score} points`;
+                    percentageElement.textContent = `${score}%`;
+                }
+            });
+        }
+
+        function openProfileEdit() {
+            const modal = document.getElementById('profileEditModal');
+            const avatarOptions = document.getElementById('editAvatarOptions');
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            
+            // Populate form fields with current user data
+            document.getElementById('editFirstName').value = currentUser.firstName;
+            document.getElementById('editLastName').value = currentUser.lastName;
+            document.getElementById('editGrade').value = currentUser.grade;
+            
+            // Clear existing avatar options
+            avatarOptions.innerHTML = '';
+            
+            // Add all avatar options
+            const avatars = [
+                // First group of avatars
+                { gender: 'female', avatar: 'girl1', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy1&backgroundColor=b6e3f4&hair=long01&hairColor=8B4513&clothingColor=FF69B4&mouth=smile&eyes=happy' },
+                { gender: 'female', avatar: 'girl2', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy2&backgroundColor=b6e3f4&hair=shortHair&hairColor=000000&clothingColor=4169E1&mouth=smile&eyes=happy' },
+                { gender: 'female', avatar: 'girl3', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy3&backgroundColor=b6e3f4&hair=long02&hairColor=4B0082&clothingColor=32CD32&mouth=smile&eyes=happy' },
+                { gender: 'female', avatar: 'girl4', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy4&backgroundColor=b6e3f4&hair=curly&hairColor=FFD700&clothingColor=FF4500&mouth=smile&eyes=happy' },
+                { gender: 'female', avatar: 'girl5', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy5&backgroundColor=b6e3f4&hair=long03&hairColor=A52A2A&clothingColor=9370DB&mouth=smile&eyes=happy' },
+                { gender: 'female', avatar: 'girl6', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy6&backgroundColor=b6e3f4&hair=long04&hairColor=FF69B4&clothingColor=FFD700&mouth=smile&eyes=happy' },
+                { gender: 'female', avatar: 'girl7', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy7&backgroundColor=b6e3f4&hair=shortHair&hairColor=000000&clothingColor=20B2AA&mouth=smile&eyes=happy' },
+                { gender: 'female', avatar: 'girl8', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy8&backgroundColor=b6e3f4&hair=long05&hairColor=8B4513&clothingColor=FF6347&mouth=smile&eyes=happy' },
+                { gender: 'female', avatar: 'girl9', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy17&backgroundColor=b6e3f4&hair=long01&hairColor=FF69B4&clothingColor=9370DB&mouth=smile&eyes=happy' },
+                { gender: 'female', avatar: 'girl10', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy18&backgroundColor=b6e3f4&hair=curly&hairColor=4B0082&clothingColor=FFD700&mouth=smile&eyes=happy' },
+                { gender: 'female', avatar: 'girl11', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy19&backgroundColor=b6e3f4&hair=long02&hairColor=000000&clothingColor=FF4500&mouth=smile&eyes=happy' },
+                { gender: 'female', avatar: 'girl12', src: 'https://api.dicebear.com/7.x/avataaars/svg?seed=happy20&backgroundColor=b6e3f4&hair=shortHair&hairColor=A52A2A&clothingColor=32CD32&mouth=smile&eyes=happy' }
+            ];
+            
+            avatars.forEach(avatar => {
+                const option = document.createElement('div');
+                option.className = 'avatar-option';
+                option.setAttribute('data-gender', avatar.gender);
+                option.setAttribute('data-avatar', avatar.avatar);
+                
+                const img = document.createElement('img');
+                img.src = avatar.src;
+                img.alt = `Avatar ${avatar.avatar}`;
+                
+                option.appendChild(img);
+                option.addEventListener('click', () => {
+                    document.querySelectorAll('.avatar-option').forEach(opt => opt.classList.remove('selected'));
+                    option.classList.add('selected');
+                });
+                
+                // Select current avatar if it matches
+                if (currentUser.avatar?.avatarId === avatar.avatar) {
+                    option.classList.add('selected');
+                }
+                
+                avatarOptions.appendChild(option);
+            });
+            
+            // Show modal
+            modal.style.display = 'flex';
+        }
+
+        function closeProfileEdit() {
+            document.getElementById('profileEditModal').style.display = 'none';
+        }
+
+        function saveProfileChanges() {
+            const firstName = document.getElementById('editFirstName').value.trim();
+            const lastName = document.getElementById('editLastName').value.trim();
+            const grade = document.getElementById('editGrade').value;
+            const selectedAvatar = document.querySelector('.avatar-option.selected');
+            
+            if (!selectedAvatar) {
+                alert('Please select an avatar');
+                return;
+            }
+            
+            if (firstName.length < 2 || lastName.length < 2) {
+                alert('First and last names must be at least 2 characters long');
+                return;
+            }
+            
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Update current user data
+            currentUser.firstName = firstName;
+            currentUser.lastName = lastName;
+            currentUser.grade = grade;
+            currentUser.avatar = {
+                gender: selectedAvatar.getAttribute('data-gender'),
+                avatarId: selectedAvatar.getAttribute('data-avatar'),
+                src: selectedAvatar.querySelector('img').src
+            };
+            
+            // Update user in users array
+            const userIndex = users.findIndex(u => u.username === currentUser.username);
+            if (userIndex !== -1) {
+                users[userIndex] = currentUser;
+            }
+            
+            // Save changes
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            updateUserProfile();
+            closeProfileEdit();
+        }
+
+        function updateUserProfile() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (currentUser) {
+                const userProfile = document.getElementById('userProfile');
+                const userAvatarImg = document.getElementById('userAvatarImg');
+                const userName = document.getElementById('userName');
+                const userPoints = document.getElementById('userPoints');
+                
+                userProfile.style.display = 'flex';
+                userAvatarImg.src = currentUser.avatar?.src || '';
+                userName.textContent = currentUser.username;
+                userPoints.textContent = 'Total Points: ' + 
+                    Object.values(currentUser.progress).reduce((sum, continent) => sum + continent.points, 0);
+            }
+        }
+
+        // Initialize profile on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUserProfile();
+        });
+    </script>
+
+    <!-- Profile Edit Modal -->
+    <div id="profileEditModal" class="profile-edit-modal">
+        <div class="profile-edit-content">
+            <h2 class="profile-edit-title">Edit Profile</h2>
+            
+            <!-- Profile Information -->
+            <div class="profile-info-section">
+                <div class="form-group">
+                    <label for="editFirstName">First Name</label>
+                    <input type="text" id="editFirstName" required minlength="2" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="editLastName">Last Name</label>
+                    <input type="text" id="editLastName" required minlength="2" maxlength="50">
+                </div>
+                <div class="form-group">
+                    <label for="editGrade">Current Grade</label>
+                    <select id="editGrade" required>
+                        <option value="3">Grade 3</option>
+                        <option value="4">Grade 4</option>
+                        <option value="5">Grade 5</option>
+                        <option value="6">Grade 6</option>
+                        <option value="7">Grade 7</option>
+                        <option value="8">Grade 8</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Avatar Selection -->
+            <h3 class="section-title">Choose Your Avatar</h3>
+            <div class="avatar-options" id="editAvatarOptions">
+                <!-- Avatar options will be populated here -->
+            </div>
+
+            <div class="modal-buttons">
+                <button class="modal-button cancel-button" onclick="closeProfileEdit()">Cancel</button>
+                <button class="modal-button save-button" onclick="saveProfileChanges()">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+    <!-- Russia -->
+    <path d="M100,100 L300,50 L400,150 L350,250 L200,200 Z" data-name="Russia"/>
+    
+    <!-- Germany -->
+    <path d="M400,100 L500,50 L600,150 L500,200 L400,150 Z" data-name="Germany"/>
+    
+    <!-- France -->
+    <path d="M300,150 L400,100 L500,200 L400,250 L300,200 Z" data-name="France"/>
+    
+    <!-- United Kingdom -->
+    <path d="M200,150 L300,100 L350,200 L250,250 L200,200 Z" data-name="United Kingdom"/>
+    
+    <!-- Spain -->
+    <path d="M100,200 L200,150 L250,250 L150,300 L100,250 Z" data-name="Spain"/>
+    
+    <!-- Portugal -->
+    <path d="M50,200 L100,150 L150,250 L100,300 L50,250 Z" data-name="Portugal"/>
+    
+    <!-- Italy -->
+    <path d="M350,200 L450,150 L500,250 L400,300 L350,250 Z" data-name="Italy"/>
+    
+    <!-- Greece -->
+    <path d="M400,250 L500,200 L550,300 L450,350 L400,300 Z" data-name="Greece"/>
+    
+    <!-- Turkey -->
+    <path d="M450,250 L550,200 L600,300 L500,350 L450,300 Z" data-name="Turkey"/>
+    
+    <!-- Ukraine -->
+    <path d="M500,150 L600,100 L650,200 L550,250 L500,200 Z" data-name="Ukraine"/>
+    
+    <!-- Poland -->
+    <path d="M450,150 L550,100 L600,200 L500,250 L450,200 Z" data-name="Poland"/>
+    
+    <!-- Sweden -->
+    <path d="M500,50 L600,0 L650,100 L550,150 L500,100 Z" data-name="Sweden"/>
+    
+    <!-- Norway -->
+    <path d="M450,50 L550,0 L600,100 L500,150 L450,100 Z" data-name="Norway"/>
+    
+    <!-- Finland -->
+    <path d="M550,50 L650,0 L700,100 L600,150 L550,100 Z" data-name="Finland"/>
+    
+    <!-- Denmark -->
+    <path d="M400,100 L450,50 L500,150 L450,200 L400,150 Z" data-name="Denmark"/>
+    
+    <!-- Netherlands -->
+    <path d="M350,100 L400,50 L450,150 L400,200 L350,150 Z" data-name="Netherlands"/>
+    
+    <!-- Belgium -->
+    <path d="M300,100 L350,50 L400,150 L350,200 L300,150 Z" data-name="Belgium"/>
+    
+    <!-- Switzerland -->
+    <path d="M350,150 L400,100 L450,200 L400,250 L350,200 Z" data-name="Switzerland"/>
+    
+    <!-- Austria -->
+    <path d="M400,150 L450,100 L500,200 L450,250 L400,200 Z" data-name="Austria"/>
+    
+    <!-- Czech Republic -->
+    <path d="M450,150 L500,100 L550,200 L500,250 L450,200 Z" data-name="Czech Republic"/>
+    
+    <!-- Slovakia -->
+    <path d="M500,150 L550,100 L600,200 L550,250 L500,200 Z" data-name="Slovakia"/>
+    
+    <!-- Hungary -->
+    <path d="M450,200 L500,150 L550,250 L500,300 L450,250 Z" data-name="Hungary"/>
+    
+    <!-- Romania -->
+    <path d="M500,200 L550,150 L600,250 L550,300 L500,250 Z" data-name="Romania"/>
+    
+    <!-- Bulgaria -->
+    <path d="M550,200 L600,150 L650,250 L600,300 L550,250 Z" data-name="Bulgaria"/>
+    
+    <!-- Serbia -->
+    <path d="M500,250 L550,200 L600,300 L550,350 L500,300 Z" data-name="Serbia"/>
+    
+    <!-- Croatia -->
+    <path d="M450,250 L500,200 L550,300 L500,350 L450,300 Z" data-name="Croatia"/>
+    
+    <!-- Bosnia and Herzegovina -->
+    <path d="M400,250 L450,200 L500,300 L450,350 L400,300 Z" data-name="Bosnia and Herzegovina"/>
+    
+    <!-- Slovenia -->
+    <path d="M350,250 L400,200 L450,300 L400,350 L350,300 Z" data-name="Slovenia"/>
+    
+    <!-- Montenegro -->
+    <path d="M300,250 L350,200 L400,300 L350,350 L300,300 Z" data-name="Montenegro"/>
+    
+    <!-- Albania -->
+    <path d="M250,250 L300,200 L350,300 L300,350 L250,300 Z" data-name="Albania"/>
+    
+    <!-- North Macedonia -->
+    <path d="M200,250 L250,200 L300,300 L250,350 L200,300 Z" data-name="North Macedonia"/>
+    
+    <!-- Kosovo -->
+    <path d="M150,250 L200,200 L250,300 L200,350 L150,300 Z" data-name="Kosovo"/>
+    
+    <!-- Estonia -->
+    <path d="M600,100 L650,50 L700,150 L650,200 L600,150 Z" data-name="Estonia"/>
+    
+    <!-- Latvia -->
+    <path d="M550,100 L600,50 L650,150 L600,200 L550,150 Z" data-name="Latvia"/>
+    
+    <!-- Lithuania -->
+    <path d="M500,100 L550,50 L600,150 L550,200 L500,150 Z" data-name="Lithuania"/>
+    
+    <!-- Belarus -->
+    <path d="M550,150 L600,100 L650,200 L600,250 L550,200 Z" data-name="Belarus"/>
+    
+    <!-- Moldova -->
+    <path d="M600,200 L650,150 L700,250 L650,300 L600,250 Z" data-name="Moldova"/>
+    
+    <!-- Ireland -->
+    <path d="M150,100 L200,50 L250,150 L200,200 L150,150 Z" data-name="Ireland"/>
+    
+    <!-- Iceland -->
+    <path d="M200,0 L250,-50 L300,50 L250,100 L200,50 Z" data-name="Iceland"/>
+    
+    <!-- Malta -->
+    <path d="M300,300 L350,250 L400,350 L350,400 L300,350 Z" data-name="Malta"/>
+    
+    <!-- Cyprus -->
+    <path d="M350,300 L400,250 L450,350 L400,400 L350,350 Z" data-name="Cyprus"/>
+    
+    <!-- Luxembourg -->
+    <path d="M250,150 L300,100 L350,200 L300,250 L250,200 Z" data-name="Luxembourg"/>
+    
+    <!-- Liechtenstein -->
+    <path d="M200,150 L250,100 L300,200 L250,250 L200,200 Z" data-name="Liechtenstein"/>
+    
+    <!-- Andorra -->
+    <path d="M150,150 L200,100 L250,200 L200,250 L150,200 Z" data-name="Andorra"/>
+    
+    <!-- Monaco -->
+    <path d="M100,150 L150,100 L200,200 L150,250 L100,200 Z" data-name="Monaco"/>
+    
+    <!-- San Marino -->
+    <path d="M50,150 L100,100 L150,200 L100,250 L50,200 Z" data-name="San Marino"/>
+    
+    <!-- Vatican City -->
+    <path d="M0,150 L50,100 L100,200 L50,250 L0,200 Z" data-name="Vatican City"/>
+</svg> 
