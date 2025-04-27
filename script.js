@@ -441,18 +441,15 @@ async function initLearningPage() {
     // Create country list container
     const countryListContainer = document.createElement('div');
     countryListContainer.style.cssText = `
-        position: fixed;
-        right: 20px;
-        top: 100px;
-        width: 250px;
-        max-height: calc(100vh - 200px);
+        width: 100%;
+        max-width: 800px;
+        margin: 20px auto;
         background-color: white;
         border-radius: 10px;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         overflow: hidden;
-        z-index: 100;
     `;
-    document.body.appendChild(countryListContainer);
+    document.querySelector('.learning-container').appendChild(countryListContainer);
 
     // Create country list title
     const countryListTitle = document.createElement('div');
@@ -471,7 +468,7 @@ async function initLearningPage() {
     countryListScroll.style.cssText = `
         padding: 10px;
         overflow-y: auto;
-        max-height: calc(100vh - 300px);
+        max-height: 300px;
     `;
     countryListContainer.appendChild(countryListScroll);
 
